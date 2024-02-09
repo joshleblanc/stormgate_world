@@ -1,4 +1,4 @@
-# StormgateWorldClient::ErrorResponse
+# StormgateWorld::ErrorResponse
 
 ## Properties
 
@@ -13,9 +13,9 @@
 ## Example
 
 ```ruby
-require 'stormgate_world_client'
+require 'stormgate_world'
 
-instance = StormgateWorldClient::ErrorResponse.new(
+instance = StormgateWorld::ErrorResponse.new(
   code: null,
   error: null,
   full_error: null,

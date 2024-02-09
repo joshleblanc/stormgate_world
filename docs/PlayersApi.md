@@ -1,4 +1,4 @@
-# StormgateWorldClient::PlayersApi
+# StormgateWorld::PlayersApi
 
 All URIs are relative to *https://api.stormgateworld.com*
 
@@ -24,16 +24,16 @@ All URIs are relative to *https://api.stormgateworld.com*
 
 ```ruby
 require 'time'
-require 'stormgate_world_client'
+require 'stormgate_world'
 
-api_instance = StormgateWorldClient::PlayersApi.new
+api_instance = StormgateWorld::PlayersApi.new
 player_id = 'player_id_example' # String | Player ID
 
 begin
   
   result = api_instance.get_player(player_id)
   p result
-rescue StormgateWorldClient::ApiError => e
+rescue StormgateWorld::ApiError => e
   puts "Error when calling PlayersApi->get_player: #{e}"
 end
 ```
@@ -51,7 +51,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PlayerResponse>
-rescue StormgateWorldClient::ApiError => e
+rescue StormgateWorld::ApiError => e
   puts "Error when calling PlayersApi->get_player_with_http_info: #{e}"
 end
 ```
@@ -86,16 +86,16 @@ No authorization required
 
 ```ruby
 require 'time'
-require 'stormgate_world_client'
+require 'stormgate_world'
 
-api_instance = StormgateWorldClient::PlayersApi.new
+api_instance = StormgateWorld::PlayersApi.new
 player_id = 'player_id_example' # String | Player ID
 
 begin
   
   result = api_instance.get_player_last_match(player_id)
   p result
-rescue StormgateWorldClient::ApiError => e
+rescue StormgateWorld::ApiError => e
   puts "Error when calling PlayersApi->get_player_last_match: #{e}"
 end
 ```
@@ -113,7 +113,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <MatchResponse>
-rescue StormgateWorldClient::ApiError => e
+rescue StormgateWorld::ApiError => e
   puts "Error when calling PlayersApi->get_player_last_match_with_http_info: #{e}"
 end
 ```
@@ -148,16 +148,16 @@ No authorization required
 
 ```ruby
 require 'time'
-require 'stormgate_world_client'
+require 'stormgate_world'
 
-api_instance = StormgateWorldClient::PlayersApi.new
+api_instance = StormgateWorld::PlayersApi.new
 player_id = 'player_id_example' # String | Player ID
 
 begin
   
   result = api_instance.get_player_matches(player_id)
   p result
-rescue StormgateWorldClient::ApiError => e
+rescue StormgateWorld::ApiError => e
   puts "Error when calling PlayersApi->get_player_matches: #{e}"
 end
 ```
@@ -175,7 +175,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PlayerMatchesResponse>
-rescue StormgateWorldClient::ApiError => e
+rescue StormgateWorld::ApiError => e
   puts "Error when calling PlayersApi->get_player_matches_with_http_info: #{e}"
 end
 ```
@@ -210,23 +210,23 @@ No authorization required
 
 ```ruby
 require 'time'
-require 'stormgate_world_client'
+require 'stormgate_world'
 # setup authorization
-StormgateWorldClient.configure do |config|
+StormgateWorld.configure do |config|
   # Configure API key authorization: api_key
   config.api_key['api_key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['api_key'] = 'Bearer'
 end
 
-api_instance = StormgateWorldClient::PlayersApi.new
+api_instance = StormgateWorld::PlayersApi.new
 player_id = 'player_id_example' # String | Player ID
 
 begin
   
   result = api_instance.get_player_preferences(player_id)
   p result
-rescue StormgateWorldClient::ApiError => e
+rescue StormgateWorld::ApiError => e
   puts "Error when calling PlayersApi->get_player_preferences: #{e}"
 end
 ```
@@ -244,7 +244,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PlayerPreferences>
-rescue StormgateWorldClient::ApiError => e
+rescue StormgateWorld::ApiError => e
   puts "Error when calling PlayersApi->get_player_preferences_with_http_info: #{e}"
 end
 ```
@@ -279,16 +279,16 @@ end
 
 ```ruby
 require 'time'
-require 'stormgate_world_client'
+require 'stormgate_world'
 
-api_instance = StormgateWorldClient::PlayersApi.new
+api_instance = StormgateWorld::PlayersApi.new
 player_id = 'player_id_example' # String | Player ID
 
 begin
   
   result = api_instance.get_player_statistics_activity(player_id)
   p result
-rescue StormgateWorldClient::ApiError => e
+rescue StormgateWorld::ApiError => e
   puts "Error when calling PlayersApi->get_player_statistics_activity: #{e}"
 end
 ```
@@ -306,7 +306,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PlayerActivityStats>
-rescue StormgateWorldClient::ApiError => e
+rescue StormgateWorld::ApiError => e
   puts "Error when calling PlayersApi->get_player_statistics_activity_with_http_info: #{e}"
 end
 ```
@@ -341,16 +341,16 @@ No authorization required
 
 ```ruby
 require 'time'
-require 'stormgate_world_client'
+require 'stormgate_world'
 
-api_instance = StormgateWorldClient::PlayersApi.new
+api_instance = StormgateWorld::PlayersApi.new
 player_id = 'player_id_example' # String | Player ID
 
 begin
   
   result = api_instance.get_player_statistics_matchups(player_id)
   p result
-rescue StormgateWorldClient::ApiError => e
+rescue StormgateWorld::ApiError => e
   puts "Error when calling PlayersApi->get_player_statistics_matchups: #{e}"
 end
 ```
@@ -368,7 +368,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PlayerMatchupsStats>
-rescue StormgateWorldClient::ApiError => e
+rescue StormgateWorld::ApiError => e
   puts "Error when calling PlayersApi->get_player_statistics_matchups_with_http_info: #{e}"
 end
 ```
@@ -403,9 +403,9 @@ No authorization required
 
 ```ruby
 require 'time'
-require 'stormgate_world_client'
+require 'stormgate_world'
 
-api_instance = StormgateWorldClient::PlayersApi.new
+api_instance = StormgateWorld::PlayersApi.new
 player_id = 'player_id_example' # String | Player ID
 opts = {
   count: 789 # Integer | 
@@ -415,7 +415,7 @@ begin
   
   result = api_instance.get_player_statistics_opponents(player_id, opts)
   p result
-rescue StormgateWorldClient::ApiError => e
+rescue StormgateWorld::ApiError => e
   puts "Error when calling PlayersApi->get_player_statistics_opponents: #{e}"
 end
 ```
@@ -433,7 +433,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PlayerOpponentsStats>
-rescue StormgateWorldClient::ApiError => e
+rescue StormgateWorld::ApiError => e
   puts "Error when calling PlayersApi->get_player_statistics_opponents_with_http_info: #{e}"
 end
 ```
@@ -469,24 +469,24 @@ No authorization required
 
 ```ruby
 require 'time'
-require 'stormgate_world_client'
+require 'stormgate_world'
 # setup authorization
-StormgateWorldClient.configure do |config|
+StormgateWorld.configure do |config|
   # Configure API key authorization: api_key
   config.api_key['api_key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   # config.api_key_prefix['api_key'] = 'Bearer'
 end
 
-api_instance = StormgateWorldClient::PlayersApi.new
+api_instance = StormgateWorld::PlayersApi.new
 player_id = 'player_id_example' # String | Player ID
-player_preferences = StormgateWorldClient::PlayerPreferences.new # PlayerPreferences | 
+player_preferences = StormgateWorld::PlayerPreferences.new # PlayerPreferences | 
 
 begin
   
   result = api_instance.update_player_preferences(player_id, player_preferences)
   p result
-rescue StormgateWorldClient::ApiError => e
+rescue StormgateWorld::ApiError => e
   puts "Error when calling PlayersApi->update_player_preferences: #{e}"
 end
 ```
@@ -504,7 +504,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PlayerPreferences>
-rescue StormgateWorldClient::ApiError => e
+rescue StormgateWorld::ApiError => e
   puts "Error when calling PlayersApi->update_player_preferences_with_http_info: #{e}"
 end
 ```

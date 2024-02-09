@@ -1,4 +1,4 @@
-# StormgateWorldClient::ProfilePrivacy
+# StormgateWorld::ProfilePrivacy
 
 ## Properties
 
@@ -8,8 +8,8 @@
 ## Example
 
 ```ruby
-require 'stormgate_world_client'
+require 'stormgate_world'
 
-instance = StormgateWorldClient::ProfilePrivacy.new()
+instance = StormgateWorld::ProfilePrivacy.new()
 ```
 

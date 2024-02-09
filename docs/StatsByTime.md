@@ -1,4 +1,4 @@
-# StormgateWorldClient::StatsByTime
+# StormgateWorld::StatsByTime
 
 ## Properties
 
@@ -15,9 +15,9 @@
 ## Example
 
 ```ruby
-require 'stormgate_world_client'
+require 'stormgate_world'
 
-instance = StormgateWorldClient::StatsByTime.new(
+instance = StormgateWorld::StatsByTime.new(
   cached_at: null,
   updated_at: null,
   period: null,

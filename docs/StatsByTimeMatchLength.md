@@ -1,4 +1,4 @@
-# StormgateWorldClient::StatsByTimeMatchLength
+# StormgateWorld::StatsByTimeMatchLength
 
 ## Properties
 
@@ -10,9 +10,9 @@
 ## Example
 
 ```ruby
-require 'stormgate_world_client'
+require 'stormgate_world'
 
-instance = StormgateWorldClient::StatsByTimeMatchLength.new(
+instance = StormgateWorld::StatsByTimeMatchLength.new(
   aggregated: null,
   history: null
 )

@@ -1,4 +1,4 @@
-# StormgateWorldClient::MatchParticipantPlayerLeaderboardEntryResponse
+# StormgateWorld::MatchParticipantPlayerLeaderboardEntryResponse
 
 ## Properties
 
@@ -16,9 +16,9 @@
 ## Example
 
 ```ruby
-require 'stormgate_world_client'
+require 'stormgate_world'
 
-instance = StormgateWorldClient::MatchParticipantPlayerLeaderboardEntryResponse.new(
+instance = StormgateWorld::MatchParticipantPlayerLeaderboardEntryResponse.new(
   leaderboard_entry_id: null,
   league: null,
   tier: null,

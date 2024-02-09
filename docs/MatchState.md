@@ -1,4 +1,4 @@
-# StormgateWorldClient::MatchState
+# StormgateWorld::MatchState
 
 ## Properties
 
@@ -8,8 +8,8 @@
 ## Example
 
 ```ruby
-require 'stormgate_world_client'
+require 'stormgate_world'
 
-instance = StormgateWorldClient::MatchState.new()
+instance = StormgateWorld::MatchState.new()
 ```
 

@@ -1,4 +1,4 @@
-# StormgateWorldClient::PlayerStatsEntryNumBreakdown
+# StormgateWorld::PlayerStatsEntryNumBreakdown
 
 ## Properties
 
@@ -12,9 +12,9 @@
 ## Example
 
 ```ruby
-require 'stormgate_world_client'
+require 'stormgate_world'
 
-instance = StormgateWorldClient::PlayerStatsEntryNumBreakdown.new(
+instance = StormgateWorld::PlayerStatsEntryNumBreakdown.new(
   max: null,
   min: null,
   median: null,

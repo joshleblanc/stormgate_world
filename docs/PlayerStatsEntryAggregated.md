@@ -1,4 +1,4 @@
-# StormgateWorldClient::PlayerStatsEntryAggregated
+# StormgateWorld::PlayerStatsEntryAggregated
 
 ## Properties
 
@@ -17,9 +17,9 @@
 ## Example
 
 ```ruby
-require 'stormgate_world_client'
+require 'stormgate_world'
 
-instance = StormgateWorldClient::PlayerStatsEntryAggregated.new(
+instance = StormgateWorld::PlayerStatsEntryAggregated.new(
   matches: null,
   matches_per_day: null,
   wins: null,

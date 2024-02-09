@@ -1,4 +1,4 @@
-# StormgateWorldClient::LeaderboardEntriesApi
+# StormgateWorld::LeaderboardEntriesApi
 
 All URIs are relative to *https://api.stormgateworld.com*
 
@@ -17,16 +17,16 @@ All URIs are relative to *https://api.stormgateworld.com*
 
 ```ruby
 require 'time'
-require 'stormgate_world_client'
+require 'stormgate_world'
 
-api_instance = StormgateWorldClient::LeaderboardEntriesApi.new
+api_instance = StormgateWorld::LeaderboardEntriesApi.new
 leaderboard_entry_id = 'leaderboard_entry_id_example' # String | Player Leaderboard Entry ID
 
 begin
   
   result = api_instance.get_leaderboard_entry_history(leaderboard_entry_id)
   p result
-rescue StormgateWorldClient::ApiError => e
+rescue StormgateWorld::ApiError => e
   puts "Error when calling LeaderboardEntriesApi->get_leaderboard_entry_history: #{e}"
 end
 ```
@@ -44,7 +44,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <LeaderboardEntryHistory>
-rescue StormgateWorldClient::ApiError => e
+rescue StormgateWorld::ApiError => e
   puts "Error when calling LeaderboardEntriesApi->get_leaderboard_entry_history_with_http_info: #{e}"
 end
 ```

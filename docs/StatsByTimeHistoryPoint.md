@@ -1,4 +1,4 @@
-# StormgateWorldClient::StatsByTimeHistoryPoint
+# StormgateWorld::StatsByTimeHistoryPoint
 
 ## Properties
 
@@ -17,9 +17,9 @@
 ## Example
 
 ```ruby
-require 'stormgate_world_client'
+require 'stormgate_world'
 
-instance = StormgateWorldClient::StatsByTimeHistoryPoint.new(
+instance = StormgateWorld::StatsByTimeHistoryPoint.new(
   date: null,
   win_rate: null,
   win_rate_by_match_length: null,

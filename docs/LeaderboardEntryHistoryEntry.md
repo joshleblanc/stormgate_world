@@ -1,4 +1,4 @@
-# StormgateWorldClient::LeaderboardEntryHistoryEntry
+# StormgateWorld::LeaderboardEntryHistoryEntry
 
 ## Properties
 
@@ -12,9 +12,9 @@
 ## Example
 
 ```ruby
-require 'stormgate_world_client'
+require 'stormgate_world'
 
-instance = StormgateWorldClient::LeaderboardEntryHistoryEntry.new(
+instance = StormgateWorld::LeaderboardEntryHistoryEntry.new(
   time: null,
   mmr: null,
   max_confirmed_mmr: null,

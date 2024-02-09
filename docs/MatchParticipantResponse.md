@@ -1,4 +1,4 @@
-# StormgateWorldClient::MatchParticipantResponse
+# StormgateWorld::MatchParticipantResponse
 
 ## Properties
 
@@ -19,9 +19,9 @@
 ## Example
 
 ```ruby
-require 'stormgate_world_client'
+require 'stormgate_world'
 
-instance = StormgateWorldClient::MatchParticipantResponse.new(
+instance = StormgateWorld::MatchParticipantResponse.new(
   player: null,
   player_leaderboard_entry: null,
   race: null,

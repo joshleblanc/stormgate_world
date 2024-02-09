@@ -1,4 +1,4 @@
-# StormgateWorldClient::PlayerOpponentsStats
+# StormgateWorld::PlayerOpponentsStats
 
 ## Properties
 
@@ -11,9 +11,9 @@
 ## Example
 
 ```ruby
-require 'stormgate_world_client'
+require 'stormgate_world'
 
-instance = StormgateWorldClient::PlayerOpponentsStats.new(
+instance = StormgateWorld::PlayerOpponentsStats.new(
   cached_at: null,
   count: null,
   opponents: null

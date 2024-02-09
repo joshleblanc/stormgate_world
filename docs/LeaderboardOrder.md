@@ -1,4 +1,4 @@
-# StormgateWorldClient::LeaderboardOrder
+# StormgateWorld::LeaderboardOrder
 
 ## Properties
 
@@ -8,8 +8,8 @@
 ## Example
 
 ```ruby
-require 'stormgate_world_client'
+require 'stormgate_world'
 
-instance = StormgateWorldClient::LeaderboardOrder.new()
+instance = StormgateWorld::LeaderboardOrder.new()
 ```
 

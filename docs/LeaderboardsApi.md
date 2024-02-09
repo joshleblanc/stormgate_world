@@ -1,4 +1,4 @@
-# StormgateWorldClient::LeaderboardsApi
+# StormgateWorld::LeaderboardsApi
 
 All URIs are relative to *https://api.stormgateworld.com*
 
@@ -18,14 +18,14 @@ All URIs are relative to *https://api.stormgateworld.com*
 
 ```ruby
 require 'time'
-require 'stormgate_world_client'
+require 'stormgate_world'
 
-api_instance = StormgateWorldClient::LeaderboardsApi.new
+api_instance = StormgateWorld::LeaderboardsApi.new
 opts = {
-  race: StormgateWorldClient::Race::INFERNALS, # Race | 
+  race: StormgateWorld::Race::INFERNALS, # Race | 
   page: 789, # Integer | 
   count: 789, # Integer | 
-  order: StormgateWorldClient::LeaderboardOrder::POINTS, # LeaderboardOrder | 
+  order: StormgateWorld::LeaderboardOrder::POINTS, # LeaderboardOrder | 
   query: 'query_example' # String | 
 }
 
@@ -33,7 +33,7 @@ begin
   
   result = api_instance.get_leaderboard(opts)
   p result
-rescue StormgateWorldClient::ApiError => e
+rescue StormgateWorld::ApiError => e
   puts "Error when calling LeaderboardsApi->get_leaderboard: #{e}"
 end
 ```
@@ -51,7 +51,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <LeaderboardResponse>
-rescue StormgateWorldClient::ApiError => e
+rescue StormgateWorld::ApiError => e
   puts "Error when calling LeaderboardsApi->get_leaderboard_with_http_info: #{e}"
 end
 ```
@@ -90,15 +90,15 @@ No authorization required
 
 ```ruby
 require 'time'
-require 'stormgate_world_client'
+require 'stormgate_world'
 
-api_instance = StormgateWorldClient::LeaderboardsApi.new
+api_instance = StormgateWorld::LeaderboardsApi.new
 
 begin
   
   result = api_instance.get_leaderboard_dump
   p result
-rescue StormgateWorldClient::ApiError => e
+rescue StormgateWorld::ApiError => e
   puts "Error when calling LeaderboardsApi->get_leaderboard_dump: #{e}"
 end
 ```
@@ -116,7 +116,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <LeaderboardDumpResponse>
-rescue StormgateWorldClient::ApiError => e
+rescue StormgateWorld::ApiError => e
   puts "Error when calling LeaderboardsApi->get_leaderboard_dump_with_http_info: #{e}"
 end
 ```

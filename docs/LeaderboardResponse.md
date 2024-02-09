@@ -1,4 +1,4 @@
-# StormgateWorldClient::LeaderboardResponse
+# StormgateWorld::LeaderboardResponse
 
 ## Properties
 
@@ -12,9 +12,9 @@
 ## Example
 
 ```ruby
-require 'stormgate_world_client'
+require 'stormgate_world'
 
-instance = StormgateWorldClient::LeaderboardResponse.new(
+instance = StormgateWorld::LeaderboardResponse.new(
   page: null,
   count: null,
   total: null,

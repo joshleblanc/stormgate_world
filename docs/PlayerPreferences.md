@@ -1,4 +1,4 @@
-# StormgateWorldClient::PlayerPreferences
+# StormgateWorld::PlayerPreferences
 
 ## Properties
 
@@ -9,9 +9,9 @@
 ## Example
 
 ```ruby
-require 'stormgate_world_client'
+require 'stormgate_world'
 
-instance = StormgateWorldClient::PlayerPreferences.new(
+instance = StormgateWorld::PlayerPreferences.new(
   privacy_profile: null
 )
 ```

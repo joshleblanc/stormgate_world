@@ -1,4 +1,4 @@
-# StormgateWorldClient::StatisticsApi
+# StormgateWorld::StatisticsApi
 
 All URIs are relative to *https://api.stormgateworld.com*
 
@@ -17,9 +17,9 @@ All URIs are relative to *https://api.stormgateworld.com*
 
 ```ruby
 require 'time'
-require 'stormgate_world_client'
+require 'stormgate_world'
 
-api_instance = StormgateWorldClient::StatisticsApi.new
+api_instance = StormgateWorld::StatisticsApi.new
 opts = {
   league: 'league_example' # String | 
 }
@@ -28,7 +28,7 @@ begin
   
   result = api_instance.get_statistics(opts)
   p result
-rescue StormgateWorldClient::ApiError => e
+rescue StormgateWorld::ApiError => e
   puts "Error when calling StatisticsApi->get_statistics: #{e}"
 end
 ```
@@ -46,7 +46,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <StatsByTime>
-rescue StormgateWorldClient::ApiError => e
+rescue StormgateWorld::ApiError => e
   puts "Error when calling StatisticsApi->get_statistics_with_http_info: #{e}"
 end
 ```

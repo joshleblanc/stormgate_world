@@ -1,4 +1,4 @@
-# StormgateWorldClient::PlayerMatchupsStatsMatchup
+# StormgateWorld::PlayerMatchupsStatsMatchup
 
 ## Properties
 
@@ -12,9 +12,9 @@
 ## Example
 
 ```ruby
-require 'stormgate_world_client'
+require 'stormgate_world'
 
-instance = StormgateWorldClient::PlayerMatchupsStatsMatchup.new(
+instance = StormgateWorld::PlayerMatchupsStatsMatchup.new(
   race: null,
   opponent_race: null,
   aggregated: null,

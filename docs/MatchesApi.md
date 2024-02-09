@@ -1,4 +1,4 @@
-# StormgateWorldClient::MatchesApi
+# StormgateWorld::MatchesApi
 
 All URIs are relative to *https://api.stormgateworld.com*
 
@@ -17,20 +17,20 @@ All URIs are relative to *https://api.stormgateworld.com*
 
 ```ruby
 require 'time'
-require 'stormgate_world_client'
+require 'stormgate_world'
 
-api_instance = StormgateWorldClient::MatchesApi.new
+api_instance = StormgateWorld::MatchesApi.new
 opts = {
   page: 789, # Integer | 
   count: 789, # Integer | 
-  state: StormgateWorldClient::MatchState::ONGOING # MatchState | 
+  state: StormgateWorld::MatchState::ONGOING # MatchState | 
 }
 
 begin
   
   result = api_instance.get_matches(opts)
   p result
-rescue StormgateWorldClient::ApiError => e
+rescue StormgateWorld::ApiError => e
   puts "Error when calling MatchesApi->get_matches: #{e}"
 end
 ```
@@ -48,7 +48,7 @@ begin
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <MatchesResponse>
-rescue StormgateWorldClient::ApiError => e
+rescue StormgateWorld::ApiError => e
   puts "Error when calling MatchesApi->get_matches_with_http_info: #{e}"
 end
 ```

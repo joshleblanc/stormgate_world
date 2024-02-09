@@ -1,4 +1,4 @@
-# StormgateWorldClient::PlayerActivityStatsRace
+# StormgateWorld::PlayerActivityStatsRace
 
 ## Properties
 
@@ -10,9 +10,9 @@
 ## Example
 
 ```ruby
-require 'stormgate_world_client'
+require 'stormgate_world'
 
-instance = StormgateWorldClient::PlayerActivityStatsRace.new(
+instance = StormgateWorld::PlayerActivityStatsRace.new(
   aggregated: null,
   history: null
 )
