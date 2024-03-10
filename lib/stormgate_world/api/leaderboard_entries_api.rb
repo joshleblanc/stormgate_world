@@ -21,6 +21,8 @@ module StormgateWorld
     end
     # @param leaderboard_entry_id [String] Player Leaderboard Entry ID
     # @param [Hash] opts the optional parameters
+    # @option opts [Resolution] :resolution 
+    # @option opts [Aggregation] :aggregation 
     # @return [LeaderboardEntryHistory]
     def get_leaderboard_entry_history(leaderboard_entry_id, opts = {})
       data, _status_code, _headers = get_leaderboard_entry_history_with_http_info(leaderboard_entry_id, opts)
@@ -29,6 +31,8 @@ module StormgateWorld
 
     # @param leaderboard_entry_id [String] Player Leaderboard Entry ID
     # @param [Hash] opts the optional parameters
+    # @option opts [Resolution] :resolution 
+    # @option opts [Aggregation] :aggregation 
     # @return [Array<(LeaderboardEntryHistory, Integer, Hash)>] LeaderboardEntryHistory data, response status code and response headers
     def get_leaderboard_entry_history_with_http_info(leaderboard_entry_id, opts = {})
       if @api_client.config.debugging
@@ -43,6 +47,8 @@ module StormgateWorld
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'resolution'] = opts[:'resolution'] if !opts[:'resolution'].nil?
+      query_params[:'aggregation'] = opts[:'aggregation'] if !opts[:'aggregation'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

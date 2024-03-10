@@ -27,6 +27,8 @@ module StormgateWorld
 
     attr_accessor :nickname_discriminator
 
+    attr_accessor :avatar_url
+
     attr_accessor :rank
 
     attr_accessor :race
@@ -82,6 +84,7 @@ module StormgateWorld
         :'anonymous' => :'anonymous',
         :'nickname' => :'nickname',
         :'nickname_discriminator' => :'nickname_discriminator',
+        :'avatar_url' => :'avatar_url',
         :'rank' => :'rank',
         :'race' => :'race',
         :'league' => :'league',
@@ -111,9 +114,10 @@ module StormgateWorld
         :'anonymous' => :'Boolean',
         :'nickname' => :'String',
         :'nickname_discriminator' => :'String',
+        :'avatar_url' => :'String',
         :'rank' => :'Integer',
         :'race' => :'Race',
-        :'league' => :'String',
+        :'league' => :'League',
         :'tier' => :'Integer',
         :'mmr' => :'Float',
         :'max_confirmed_mmr' => :'Float',
@@ -132,6 +136,7 @@ module StormgateWorld
         :'player_id',
         :'nickname',
         :'nickname_discriminator',
+        :'avatar_url',
         :'rank',
         :'league',
         :'tier',
@@ -184,6 +189,10 @@ module StormgateWorld
 
       if attributes.key?(:'nickname_discriminator')
         self.nickname_discriminator = attributes[:'nickname_discriminator']
+      end
+
+      if attributes.key?(:'avatar_url')
+        self.avatar_url = attributes[:'avatar_url']
       end
 
       if attributes.key?(:'rank')
@@ -318,6 +327,7 @@ module StormgateWorld
           anonymous == o.anonymous &&
           nickname == o.nickname &&
           nickname_discriminator == o.nickname_discriminator &&
+          avatar_url == o.avatar_url &&
           rank == o.rank &&
           race == o.race &&
           league == o.league &&
@@ -341,7 +351,7 @@ module StormgateWorld
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [leaderboard_entry_id, leaderboard, player_id, anonymous, nickname, nickname_discriminator, rank, race, league, tier, mmr, max_confirmed_mmr, points, wins, losses, ties, matches, win_rate].hash
+      [leaderboard_entry_id, leaderboard, player_id, anonymous, nickname, nickname_discriminator, avatar_url, rank, race, league, tier, mmr, max_confirmed_mmr, points, wins, losses, ties, matches, win_rate].hash
     end
 
     # Builds the object from hash

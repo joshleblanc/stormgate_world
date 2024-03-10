@@ -7,11 +7,9 @@ All URIs are relative to *https://api.stormgateworld.com*
 | [**get_player**](PlayersApi.md#get_player) | **GET** /v0/players/{player_id} |  |
 | [**get_player_last_match**](PlayersApi.md#get_player_last_match) | **GET** /v0/players/{player_id}/matches/last |  |
 | [**get_player_matches**](PlayersApi.md#get_player_matches) | **GET** /v0/players/{player_id}/matches |  |
-| [**get_player_preferences**](PlayersApi.md#get_player_preferences) | **GET** /v0/players/{player_id}/preferences |  |
 | [**get_player_statistics_activity**](PlayersApi.md#get_player_statistics_activity) | **GET** /v0/players/{player_id}/statistics/activity |  |
 | [**get_player_statistics_matchups**](PlayersApi.md#get_player_statistics_matchups) | **GET** /v0/players/{player_id}/statistics/matchups |  |
 | [**get_player_statistics_opponents**](PlayersApi.md#get_player_statistics_opponents) | **GET** /v0/players/{player_id}/statistics/opponents |  |
-| [**update_player_preferences**](PlayersApi.md#update_player_preferences) | **PUT** /v0/players/{player_id}/preferences |  |
 
 
 ## get_player
@@ -140,7 +138,7 @@ No authorization required
 
 ## get_player_matches
 
-> <PlayerMatchesResponse> get_player_matches(player_id)
+> <PlayerMatchesResponse> get_player_matches(player_id, opts)
 
 
 
@@ -152,10 +150,16 @@ require 'stormgate_world'
 
 api_instance = StormgateWorld::PlayersApi.new
 player_id = 'player_id_example' # String | Player ID
+opts = {
+  race: StormgateWorld::Race::INFERNALS, # Race | 
+  opponent_player_id: 'opponent_player_id_example', # String | 
+  page: 789, # Integer | 
+  count: 789 # Integer | 
+}
 
 begin
   
-  result = api_instance.get_player_matches(player_id)
+  result = api_instance.get_player_matches(player_id, opts)
   p result
 rescue StormgateWorld::ApiError => e
   puts "Error when calling PlayersApi->get_player_matches: #{e}"
@@ -166,12 +170,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PlayerMatchesResponse>, Integer, Hash)> get_player_matches_with_http_info(player_id)
+> <Array(<PlayerMatchesResponse>, Integer, Hash)> get_player_matches_with_http_info(player_id, opts)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.get_player_matches_with_http_info(player_id)
+  data, status_code, headers = api_instance.get_player_matches_with_http_info(player_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PlayerMatchesResponse>
@@ -185,6 +189,10 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **player_id** | **String** | Player ID |  |
+| **race** | [**Race**](.md) |  | [optional] |
+| **opponent_player_id** | **String** |  | [optional] |
+| **page** | **Integer** |  | [optional] |
+| **count** | **Integer** |  | [optional] |
 
 ### Return type
 
@@ -193,75 +201,6 @@ end
 ### Authorization
 
 No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## get_player_preferences
-
-> <PlayerPreferences> get_player_preferences(player_id)
-
-
-
-### Examples
-
-```ruby
-require 'time'
-require 'stormgate_world'
-# setup authorization
-StormgateWorld.configure do |config|
-  # Configure API key authorization: api_key
-  config.api_key['api_key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['api_key'] = 'Bearer'
-end
-
-api_instance = StormgateWorld::PlayersApi.new
-player_id = 'player_id_example' # String | Player ID
-
-begin
-  
-  result = api_instance.get_player_preferences(player_id)
-  p result
-rescue StormgateWorld::ApiError => e
-  puts "Error when calling PlayersApi->get_player_preferences: #{e}"
-end
-```
-
-#### Using the get_player_preferences_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<PlayerPreferences>, Integer, Hash)> get_player_preferences_with_http_info(player_id)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.get_player_preferences_with_http_info(player_id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <PlayerPreferences>
-rescue StormgateWorld::ApiError => e
-  puts "Error when calling PlayersApi->get_player_preferences_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **player_id** | **String** | Player ID |  |
-
-### Return type
-
-[**PlayerPreferences**](PlayerPreferences.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
 
 ### HTTP request headers
 
@@ -456,76 +395,5 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## update_player_preferences
-
-> <PlayerPreferences> update_player_preferences(player_id, player_preferences)
-
-
-
-### Examples
-
-```ruby
-require 'time'
-require 'stormgate_world'
-# setup authorization
-StormgateWorld.configure do |config|
-  # Configure API key authorization: api_key
-  config.api_key['api_key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['api_key'] = 'Bearer'
-end
-
-api_instance = StormgateWorld::PlayersApi.new
-player_id = 'player_id_example' # String | Player ID
-player_preferences = StormgateWorld::PlayerPreferences.new # PlayerPreferences | 
-
-begin
-  
-  result = api_instance.update_player_preferences(player_id, player_preferences)
-  p result
-rescue StormgateWorld::ApiError => e
-  puts "Error when calling PlayersApi->update_player_preferences: #{e}"
-end
-```
-
-#### Using the update_player_preferences_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<PlayerPreferences>, Integer, Hash)> update_player_preferences_with_http_info(player_id, player_preferences)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.update_player_preferences_with_http_info(player_id, player_preferences)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <PlayerPreferences>
-rescue StormgateWorld::ApiError => e
-  puts "Error when calling PlayersApi->update_player_preferences_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **player_id** | **String** | Player ID |  |
-| **player_preferences** | [**PlayerPreferences**](PlayerPreferences.md) |  |  |
-
-### Return type
-
-[**PlayerPreferences**](PlayerPreferences.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
 - **Accept**: application/json
 

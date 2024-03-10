@@ -14,12 +14,13 @@ require 'date'
 require 'time'
 
 module StormgateWorld
-  class Race
-    INFERNALS = "infernals".freeze
-    VANGUARD = "vanguard".freeze
+  class Aggregation
+    LAST = "last".freeze
+    MAX_MMR = "max_mmr".freeze
+    MAX_POINTS = "max_points".freeze
 
     def self.all_vars
-      @all_vars ||= [INFERNALS, VANGUARD].freeze
+      @all_vars ||= [LAST, MAX_MMR, MAX_POINTS].freeze
     end
 
     # Builds the enum from string
@@ -33,8 +34,8 @@ module StormgateWorld
     # @param [String] The enum value in the form of the string
     # @return [String] The enum value
     def build_from_hash(value)
-      return value if Race.all_vars.include?(value)
-      raise "Invalid ENUM value #{value} for class #Race"
+      return value if Aggregation.all_vars.include?(value)
+      raise "Invalid ENUM value #{value} for class #Aggregation"
     end
   end
 end

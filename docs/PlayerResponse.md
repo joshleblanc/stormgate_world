@@ -8,8 +8,10 @@
 | **anonymous** | **Boolean** |  |  |
 | **nickname** | **String** |  | [optional] |
 | **nickname_discriminator** | **String** |  | [optional] |
+| **avatar_url** | **String** |  | [optional] |
 | **leaderboard_entries** | [**Array&lt;LeaderboardEntryResponse&gt;**](LeaderboardEntryResponse.md) |  |  |
 | **last_match_ended_at** | **Time** |  | [optional] |
+| **last_match_started_at** | **Time** |  | [optional] |
 
 ## Example
 
@@ -21,8 +23,10 @@ instance = StormgateWorld::PlayerResponse.new(
   anonymous: null,
   nickname: null,
   nickname_discriminator: null,
+  avatar_url: null,
   leaderboard_entries: null,
-  last_match_ended_at: null
+  last_match_ended_at: null,
+  last_match_started_at: null
 )
 ```
 

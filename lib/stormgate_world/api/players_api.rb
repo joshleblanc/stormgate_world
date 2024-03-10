@@ -139,6 +139,10 @@ module StormgateWorld
 
     # @param player_id [String] Player ID
     # @param [Hash] opts the optional parameters
+    # @option opts [Race] :race 
+    # @option opts [String] :opponent_player_id 
+    # @option opts [Integer] :page 
+    # @option opts [Integer] :count 
     # @return [PlayerMatchesResponse]
     def get_player_matches(player_id, opts = {})
       data, _status_code, _headers = get_player_matches_with_http_info(player_id, opts)
@@ -147,6 +151,10 @@ module StormgateWorld
 
     # @param player_id [String] Player ID
     # @param [Hash] opts the optional parameters
+    # @option opts [Race] :race 
+    # @option opts [String] :opponent_player_id 
+    # @option opts [Integer] :page 
+    # @option opts [Integer] :count 
     # @return [Array<(PlayerMatchesResponse, Integer, Hash)>] PlayerMatchesResponse data, response status code and response headers
     def get_player_matches_with_http_info(player_id, opts = {})
       if @api_client.config.debugging
@@ -156,11 +164,23 @@ module StormgateWorld
       if @api_client.config.client_side_validation && player_id.nil?
         fail ArgumentError, "Missing the required parameter 'player_id' when calling PlayersApi.get_player_matches"
       end
+      if @api_client.config.client_side_validation && !opts[:'page'].nil? && opts[:'page'] < 0
+        fail ArgumentError, 'invalid value for "opts[:"page"]" when calling PlayersApi.get_player_matches, must be greater than or equal to 0.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'count'].nil? && opts[:'count'] < 0
+        fail ArgumentError, 'invalid value for "opts[:"count"]" when calling PlayersApi.get_player_matches, must be greater than or equal to 0.'
+      end
+
       # resource path
       local_var_path = '/v0/players/{player_id}/matches'.sub('{' + 'player_id' + '}', CGI.escape(player_id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'race'] = opts[:'race'] if !opts[:'race'].nil?
+      query_params[:'opponent_player_id'] = opts[:'opponent_player_id'] if !opts[:'opponent_player_id'].nil?
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'count'] = opts[:'count'] if !opts[:'count'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -192,65 +212,6 @@ module StormgateWorld
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PlayersApi#get_player_matches\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # @param player_id [String] Player ID
-    # @param [Hash] opts the optional parameters
-    # @return [PlayerPreferences]
-    def get_player_preferences(player_id, opts = {})
-      data, _status_code, _headers = get_player_preferences_with_http_info(player_id, opts)
-      data
-    end
-
-    # @param player_id [String] Player ID
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(PlayerPreferences, Integer, Hash)>] PlayerPreferences data, response status code and response headers
-    def get_player_preferences_with_http_info(player_id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: PlayersApi.get_player_preferences ...'
-      end
-      # verify the required parameter 'player_id' is set
-      if @api_client.config.client_side_validation && player_id.nil?
-        fail ArgumentError, "Missing the required parameter 'player_id' when calling PlayersApi.get_player_preferences"
-      end
-      # resource path
-      local_var_path = '/v0/players/{player_id}/preferences'.sub('{' + 'player_id' + '}', CGI.escape(player_id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'PlayerPreferences'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['api_key']
-
-      new_options = opts.merge(
-        :operation => :"PlayersApi.get_player_preferences",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: PlayersApi#get_player_preferences\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -435,76 +396,6 @@ module StormgateWorld
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PlayersApi#get_player_statistics_opponents\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # @param player_id [String] Player ID
-    # @param player_preferences [PlayerPreferences] 
-    # @param [Hash] opts the optional parameters
-    # @return [PlayerPreferences]
-    def update_player_preferences(player_id, player_preferences, opts = {})
-      data, _status_code, _headers = update_player_preferences_with_http_info(player_id, player_preferences, opts)
-      data
-    end
-
-    # @param player_id [String] Player ID
-    # @param player_preferences [PlayerPreferences] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(PlayerPreferences, Integer, Hash)>] PlayerPreferences data, response status code and response headers
-    def update_player_preferences_with_http_info(player_id, player_preferences, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: PlayersApi.update_player_preferences ...'
-      end
-      # verify the required parameter 'player_id' is set
-      if @api_client.config.client_side_validation && player_id.nil?
-        fail ArgumentError, "Missing the required parameter 'player_id' when calling PlayersApi.update_player_preferences"
-      end
-      # verify the required parameter 'player_preferences' is set
-      if @api_client.config.client_side_validation && player_preferences.nil?
-        fail ArgumentError, "Missing the required parameter 'player_preferences' when calling PlayersApi.update_player_preferences"
-      end
-      # resource path
-      local_var_path = '/v0/players/{player_id}/preferences'.sub('{' + 'player_id' + '}', CGI.escape(player_id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(player_preferences)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'PlayerPreferences'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['api_key']
-
-      new_options = opts.merge(
-        :operation => :"PlayersApi.update_player_preferences",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: PlayersApi#update_player_preferences\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

@@ -8,7 +8,7 @@
 | **updated_at** | **Time** |  |  |
 | **period** | **String** |  |  |
 | **count** | **Integer** |  |  |
-| **league** | **String** |  | [optional] |
+| **league** | [**League**](League.md) |  | [optional] |
 | **races** | [**Array&lt;StatsByTimeEntry&gt;**](StatsByTimeEntry.md) |  |  |
 | **match_length** | [**StatsByTimeMatchLength**](StatsByTimeMatchLength.md) |  |  |
 

@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **count** | **Integer** |  |  |
 | **page** | **Integer** |  |  |
+| **total** | **Integer** |  |  |
 | **matches** | [**Array&lt;MatchResponse&gt;**](MatchResponse.md) |  |  |
 
 ## Example
@@ -16,6 +17,7 @@ require 'stormgate_world'
 instance = StormgateWorld::PlayerMatchesResponse.new(
   count: null,
   page: null,
+  total: null,
   matches: null
 )
 ```

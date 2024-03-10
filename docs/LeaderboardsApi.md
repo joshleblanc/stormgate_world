@@ -82,7 +82,7 @@ No authorization required
 
 ## get_leaderboard_dump
 
-> <LeaderboardDumpResponse> get_leaderboard_dump
+> <LeaderboardDumpResponse> get_leaderboard_dump(opts)
 
 
 
@@ -93,10 +93,13 @@ require 'time'
 require 'stormgate_world'
 
 api_instance = StormgateWorld::LeaderboardsApi.new
+opts = {
+  format: StormgateWorld::DumpFormat::JSON # DumpFormat | 
+}
 
 begin
   
-  result = api_instance.get_leaderboard_dump
+  result = api_instance.get_leaderboard_dump(opts)
   p result
 rescue StormgateWorld::ApiError => e
   puts "Error when calling LeaderboardsApi->get_leaderboard_dump: #{e}"
@@ -107,12 +110,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<LeaderboardDumpResponse>, Integer, Hash)> get_leaderboard_dump_with_http_info
+> <Array(<LeaderboardDumpResponse>, Integer, Hash)> get_leaderboard_dump_with_http_info(opts)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.get_leaderboard_dump_with_http_info
+  data, status_code, headers = api_instance.get_leaderboard_dump_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <LeaderboardDumpResponse>
@@ -123,7 +126,9 @@ end
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **format** | [**DumpFormat**](.md) |  | [optional] |
 
 ### Return type
 

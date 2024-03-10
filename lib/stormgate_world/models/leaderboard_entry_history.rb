@@ -15,11 +15,42 @@ require 'time'
 
 module StormgateWorld
   class LeaderboardEntryHistory
+    attr_accessor :cached_at
+
+    attr_accessor :resolution
+
+    attr_accessor :aggregation
+
     attr_accessor :history
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'cached_at' => :'cached_at',
+        :'resolution' => :'resolution',
+        :'aggregation' => :'aggregation',
         :'history' => :'history'
       }
     end
@@ -32,7 +63,10 @@ module StormgateWorld
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'history' => :'Array<LeaderboardEntryHistoryEntry>'
+        :'cached_at' => :'Time',
+        :'resolution' => :'Resolution',
+        :'aggregation' => :'Aggregation',
+        :'history' => :'Array<LeaderboardEntryHistoryRow>'
       }
     end
 
@@ -57,6 +91,24 @@ module StormgateWorld
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'cached_at')
+        self.cached_at = attributes[:'cached_at']
+      else
+        self.cached_at = nil
+      end
+
+      if attributes.key?(:'resolution')
+        self.resolution = attributes[:'resolution']
+      else
+        self.resolution = nil
+      end
+
+      if attributes.key?(:'aggregation')
+        self.aggregation = attributes[:'aggregation']
+      else
+        self.aggregation = nil
+      end
+
       if attributes.key?(:'history')
         if (value = attributes[:'history']).is_a?(Array)
           self.history = value
@@ -71,6 +123,18 @@ module StormgateWorld
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @cached_at.nil?
+        invalid_properties.push('invalid value for "cached_at", cached_at cannot be nil.')
+      end
+
+      if @resolution.nil?
+        invalid_properties.push('invalid value for "resolution", resolution cannot be nil.')
+      end
+
+      if @aggregation.nil?
+        invalid_properties.push('invalid value for "aggregation", aggregation cannot be nil.')
+      end
+
       if @history.nil?
         invalid_properties.push('invalid value for "history", history cannot be nil.')
       end
@@ -82,6 +146,9 @@ module StormgateWorld
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @cached_at.nil?
+      return false if @resolution.nil?
+      return false if @aggregation.nil?
       return false if @history.nil?
       true
     end
@@ -91,6 +158,9 @@ module StormgateWorld
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          cached_at == o.cached_at &&
+          resolution == o.resolution &&
+          aggregation == o.aggregation &&
           history == o.history
     end
 
@@ -103,7 +173,7 @@ module StormgateWorld
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [history].hash
+      [cached_at, resolution, aggregation, history].hash
     end
 
     # Builds the object from hash

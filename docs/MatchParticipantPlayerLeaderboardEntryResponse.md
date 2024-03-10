@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **leaderboard_entry_id** | **String** |  |  |
-| **league** | **String** |  | [optional] |
+| **league** | [**League**](League.md) |  | [optional] |
 | **tier** | **Integer** |  | [optional] |
 | **rank** | **Integer** |  | [optional] |
 | **wins** | **Integer** |  |  |

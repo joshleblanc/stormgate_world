@@ -23,9 +23,13 @@ module StormgateWorld
 
     attr_accessor :nickname_discriminator
 
+    attr_accessor :avatar_url
+
     attr_accessor :leaderboard_entries
 
     attr_accessor :last_match_ended_at
+
+    attr_accessor :last_match_started_at
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -34,8 +38,10 @@ module StormgateWorld
         :'anonymous' => :'anonymous',
         :'nickname' => :'nickname',
         :'nickname_discriminator' => :'nickname_discriminator',
+        :'avatar_url' => :'avatar_url',
         :'leaderboard_entries' => :'leaderboard_entries',
-        :'last_match_ended_at' => :'last_match_ended_at'
+        :'last_match_ended_at' => :'last_match_ended_at',
+        :'last_match_started_at' => :'last_match_started_at'
       }
     end
 
@@ -51,8 +57,10 @@ module StormgateWorld
         :'anonymous' => :'Boolean',
         :'nickname' => :'String',
         :'nickname_discriminator' => :'String',
+        :'avatar_url' => :'String',
         :'leaderboard_entries' => :'Array<LeaderboardEntryResponse>',
-        :'last_match_ended_at' => :'Time'
+        :'last_match_ended_at' => :'Time',
+        :'last_match_started_at' => :'Time'
       }
     end
 
@@ -61,7 +69,9 @@ module StormgateWorld
       Set.new([
         :'nickname',
         :'nickname_discriminator',
-        :'last_match_ended_at'
+        :'avatar_url',
+        :'last_match_ended_at',
+        :'last_match_started_at'
       ])
     end
 
@@ -100,6 +110,10 @@ module StormgateWorld
         self.nickname_discriminator = attributes[:'nickname_discriminator']
       end
 
+      if attributes.key?(:'avatar_url')
+        self.avatar_url = attributes[:'avatar_url']
+      end
+
       if attributes.key?(:'leaderboard_entries')
         if (value = attributes[:'leaderboard_entries']).is_a?(Array)
           self.leaderboard_entries = value
@@ -110,6 +124,10 @@ module StormgateWorld
 
       if attributes.key?(:'last_match_ended_at')
         self.last_match_ended_at = attributes[:'last_match_ended_at']
+      end
+
+      if attributes.key?(:'last_match_started_at')
+        self.last_match_started_at = attributes[:'last_match_started_at']
       end
     end
 
@@ -152,8 +170,10 @@ module StormgateWorld
           anonymous == o.anonymous &&
           nickname == o.nickname &&
           nickname_discriminator == o.nickname_discriminator &&
+          avatar_url == o.avatar_url &&
           leaderboard_entries == o.leaderboard_entries &&
-          last_match_ended_at == o.last_match_ended_at
+          last_match_ended_at == o.last_match_ended_at &&
+          last_match_started_at == o.last_match_started_at
     end
 
     # @see the `==` method
@@ -165,7 +185,7 @@ module StormgateWorld
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, anonymous, nickname, nickname_discriminator, leaderboard_entries, last_match_ended_at].hash
+      [id, anonymous, nickname, nickname_discriminator, avatar_url, leaderboard_entries, last_match_ended_at, last_match_started_at].hash
     end
 
     # Builds the object from hash

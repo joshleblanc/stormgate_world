@@ -20,7 +20,8 @@ module StormgateWorld
       @api_client = api_client
     end
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :league 
+    # @option opts [League] :league 
+    # @option opts [Integer] :count 
     # @return [StatsByTime]
     def get_statistics(opts = {})
       data, _status_code, _headers = get_statistics_with_http_info(opts)
@@ -28,18 +29,24 @@ module StormgateWorld
     end
 
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :league 
+    # @option opts [League] :league 
+    # @option opts [Integer] :count 
     # @return [Array<(StatsByTime, Integer, Hash)>] StatsByTime data, response status code and response headers
     def get_statistics_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: StatisticsApi.get_statistics ...'
       end
+      if @api_client.config.client_side_validation && !opts[:'count'].nil? && opts[:'count'] < 0
+        fail ArgumentError, 'invalid value for "opts[:"count"]" when calling StatisticsApi.get_statistics, must be greater than or equal to 0.'
+      end
+
       # resource path
       local_var_path = '/v0/statistics/ranked_1v1'
 
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'league'] = opts[:'league'] if !opts[:'league'].nil?
+      query_params[:'count'] = opts[:'count'] if !opts[:'count'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -71,6 +78,183 @@ module StormgateWorld
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: StatisticsApi#get_statistics\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # @param [Hash] opts the optional parameters
+    # @option opts [Date] :since 
+    # @option opts [Date] :_until 
+    # @return [ActivityStatistics]
+    def get_statistics_activity(opts = {})
+      data, _status_code, _headers = get_statistics_activity_with_http_info(opts)
+      data
+    end
+
+    # @param [Hash] opts the optional parameters
+    # @option opts [Date] :since 
+    # @option opts [Date] :_until 
+    # @return [Array<(ActivityStatistics, Integer, Hash)>] ActivityStatistics data, response status code and response headers
+    def get_statistics_activity_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StatisticsApi.get_statistics_activity ...'
+      end
+      # resource path
+      local_var_path = '/v0/statistics/activity'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'since'] = opts[:'since'] if !opts[:'since'].nil?
+      query_params[:'until'] = opts[:'_until'] if !opts[:'_until'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ActivityStatistics'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"StatisticsApi.get_statistics_activity",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StatisticsApi#get_statistics_activity\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # @param [Hash] opts the optional parameters
+    # @option opts [Date] :since 
+    # @option opts [Date] :_until 
+    # @return [CountriesStatistics]
+    def get_statistics_countries(opts = {})
+      data, _status_code, _headers = get_statistics_countries_with_http_info(opts)
+      data
+    end
+
+    # @param [Hash] opts the optional parameters
+    # @option opts [Date] :since 
+    # @option opts [Date] :_until 
+    # @return [Array<(CountriesStatistics, Integer, Hash)>] CountriesStatistics data, response status code and response headers
+    def get_statistics_countries_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StatisticsApi.get_statistics_countries ...'
+      end
+      # resource path
+      local_var_path = '/v0/statistics/countries'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'since'] = opts[:'since'] if !opts[:'since'].nil?
+      query_params[:'until'] = opts[:'_until'] if !opts[:'_until'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'CountriesStatistics'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"StatisticsApi.get_statistics_countries",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StatisticsApi#get_statistics_countries\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # @param [Hash] opts the optional parameters
+    # @option opts [Date] :since 
+    # @option opts [Date] :_until 
+    # @return [ServersStatistics]
+    def get_statistics_servers(opts = {})
+      data, _status_code, _headers = get_statistics_servers_with_http_info(opts)
+      data
+    end
+
+    # @param [Hash] opts the optional parameters
+    # @option opts [Date] :since 
+    # @option opts [Date] :_until 
+    # @return [Array<(ServersStatistics, Integer, Hash)>] ServersStatistics data, response status code and response headers
+    def get_statistics_servers_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StatisticsApi.get_statistics_servers ...'
+      end
+      # resource path
+      local_var_path = '/v0/statistics/servers'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'since'] = opts[:'since'] if !opts[:'since'].nil?
+      query_params[:'until'] = opts[:'_until'] if !opts[:'_until'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ServersStatistics'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"StatisticsApi.get_statistics_servers",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StatisticsApi#get_statistics_servers\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

@@ -19,6 +19,8 @@ module StormgateWorld
 
     attr_accessor :page
 
+    attr_accessor :total
+
     attr_accessor :matches
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -26,6 +28,7 @@ module StormgateWorld
       {
         :'count' => :'count',
         :'page' => :'page',
+        :'total' => :'total',
         :'matches' => :'matches'
       }
     end
@@ -40,6 +43,7 @@ module StormgateWorld
       {
         :'count' => :'Integer',
         :'page' => :'Integer',
+        :'total' => :'Integer',
         :'matches' => :'Array<MatchResponse>'
       }
     end
@@ -77,6 +81,12 @@ module StormgateWorld
         self.page = nil
       end
 
+      if attributes.key?(:'total')
+        self.total = attributes[:'total']
+      else
+        self.total = nil
+      end
+
       if attributes.key?(:'matches')
         if (value = attributes[:'matches']).is_a?(Array)
           self.matches = value
@@ -107,6 +117,14 @@ module StormgateWorld
         invalid_properties.push('invalid value for "page", must be greater than or equal to 0.')
       end
 
+      if @total.nil?
+        invalid_properties.push('invalid value for "total", total cannot be nil.')
+      end
+
+      if @total < 0
+        invalid_properties.push('invalid value for "total", must be greater than or equal to 0.')
+      end
+
       if @matches.nil?
         invalid_properties.push('invalid value for "matches", matches cannot be nil.')
       end
@@ -122,6 +140,8 @@ module StormgateWorld
       return false if @count < 0
       return false if @page.nil?
       return false if @page < 0
+      return false if @total.nil?
+      return false if @total < 0
       return false if @matches.nil?
       true
     end
@@ -154,6 +174,20 @@ module StormgateWorld
       @page = page
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] total Value to be assigned
+    def total=(total)
+      if total.nil?
+        fail ArgumentError, 'total cannot be nil'
+      end
+
+      if total < 0
+        fail ArgumentError, 'invalid value for "total", must be greater than or equal to 0.'
+      end
+
+      @total = total
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -161,6 +195,7 @@ module StormgateWorld
       self.class == o.class &&
           count == o.count &&
           page == o.page &&
+          total == o.total &&
           matches == o.matches
     end
 
@@ -173,7 +208,7 @@ module StormgateWorld
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [count, page, matches].hash
+      [count, page, total, matches].hash
     end
 
     # Builds the object from hash

@@ -58,9 +58,13 @@ require 'stormgate_world'
 
 api_instance = StormgateWorld::LeaderboardEntriesApi.new
 leaderboard_entry_id = 'leaderboard_entry_id_example' # String | Player Leaderboard Entry ID
+opts = {
+  resolution: StormgateWorld::Resolution::MINUTE, # Resolution | 
+  aggregation: StormgateWorld::Aggregation::LAST # Aggregation | 
+}
 
 begin
-  result = api_instance.get_leaderboard_entry_history(leaderboard_entry_id)
+  result = api_instance.get_leaderboard_entry_history(leaderboard_entry_id, opts)
   p result
 rescue StormgateWorld::ApiError => e
   puts "Exception when calling LeaderboardEntriesApi->get_leaderboard_entry_history: #{e}"
@@ -81,24 +85,33 @@ Class | Method | HTTP request | Description
 *StormgateWorld::PlayersApi* | [**get_player**](docs/PlayersApi.md#get_player) | **GET** /v0/players/{player_id} | 
 *StormgateWorld::PlayersApi* | [**get_player_last_match**](docs/PlayersApi.md#get_player_last_match) | **GET** /v0/players/{player_id}/matches/last | 
 *StormgateWorld::PlayersApi* | [**get_player_matches**](docs/PlayersApi.md#get_player_matches) | **GET** /v0/players/{player_id}/matches | 
-*StormgateWorld::PlayersApi* | [**get_player_preferences**](docs/PlayersApi.md#get_player_preferences) | **GET** /v0/players/{player_id}/preferences | 
 *StormgateWorld::PlayersApi* | [**get_player_statistics_activity**](docs/PlayersApi.md#get_player_statistics_activity) | **GET** /v0/players/{player_id}/statistics/activity | 
 *StormgateWorld::PlayersApi* | [**get_player_statistics_matchups**](docs/PlayersApi.md#get_player_statistics_matchups) | **GET** /v0/players/{player_id}/statistics/matchups | 
 *StormgateWorld::PlayersApi* | [**get_player_statistics_opponents**](docs/PlayersApi.md#get_player_statistics_opponents) | **GET** /v0/players/{player_id}/statistics/opponents | 
-*StormgateWorld::PlayersApi* | [**update_player_preferences**](docs/PlayersApi.md#update_player_preferences) | **PUT** /v0/players/{player_id}/preferences | 
 *StormgateWorld::StatisticsApi* | [**get_statistics**](docs/StatisticsApi.md#get_statistics) | **GET** /v0/statistics/ranked_1v1 | 
+*StormgateWorld::StatisticsApi* | [**get_statistics_activity**](docs/StatisticsApi.md#get_statistics_activity) | **GET** /v0/statistics/activity | 
+*StormgateWorld::StatisticsApi* | [**get_statistics_countries**](docs/StatisticsApi.md#get_statistics_countries) | **GET** /v0/statistics/countries | 
+*StormgateWorld::StatisticsApi* | [**get_statistics_servers**](docs/StatisticsApi.md#get_statistics_servers) | **GET** /v0/statistics/servers | 
 
 
 ## Documentation for Models
 
+ - [StormgateWorld::ActivityStatistics](docs/ActivityStatistics.md)
+ - [StormgateWorld::ActivityStatisticsActivity](docs/ActivityStatisticsActivity.md)
+ - [StormgateWorld::ActivityStatisticsEntry](docs/ActivityStatisticsEntry.md)
+ - [StormgateWorld::Aggregation](docs/Aggregation.md)
+ - [StormgateWorld::CountriesStatistics](docs/CountriesStatistics.md)
+ - [StormgateWorld::CountriesStatisticsEntry](docs/CountriesStatisticsEntry.md)
+ - [StormgateWorld::DumpFormat](docs/DumpFormat.md)
  - [StormgateWorld::ErrorResponse](docs/ErrorResponse.md)
  - [StormgateWorld::Leaderboard](docs/Leaderboard.md)
  - [StormgateWorld::LeaderboardDumpResponse](docs/LeaderboardDumpResponse.md)
  - [StormgateWorld::LeaderboardEntryHistory](docs/LeaderboardEntryHistory.md)
- - [StormgateWorld::LeaderboardEntryHistoryEntry](docs/LeaderboardEntryHistoryEntry.md)
+ - [StormgateWorld::LeaderboardEntryHistoryRow](docs/LeaderboardEntryHistoryRow.md)
  - [StormgateWorld::LeaderboardEntryResponse](docs/LeaderboardEntryResponse.md)
  - [StormgateWorld::LeaderboardOrder](docs/LeaderboardOrder.md)
  - [StormgateWorld::LeaderboardResponse](docs/LeaderboardResponse.md)
+ - [StormgateWorld::League](docs/League.md)
  - [StormgateWorld::MatchParticipantPlayerLeaderboardEntryResponse](docs/MatchParticipantPlayerLeaderboardEntryResponse.md)
  - [StormgateWorld::MatchParticipantPlayerResponse](docs/MatchParticipantPlayerResponse.md)
  - [StormgateWorld::MatchParticipantResponse](docs/MatchParticipantResponse.md)
@@ -114,13 +127,15 @@ Class | Method | HTTP request | Description
  - [StormgateWorld::PlayerMatchupsStatsMatchup](docs/PlayerMatchupsStatsMatchup.md)
  - [StormgateWorld::PlayerOpponentsStats](docs/PlayerOpponentsStats.md)
  - [StormgateWorld::PlayerOpponentsStatsOpponent](docs/PlayerOpponentsStatsOpponent.md)
- - [StormgateWorld::PlayerPreferences](docs/PlayerPreferences.md)
  - [StormgateWorld::PlayerResponse](docs/PlayerResponse.md)
  - [StormgateWorld::PlayerStatsEntry](docs/PlayerStatsEntry.md)
  - [StormgateWorld::PlayerStatsEntryAggregated](docs/PlayerStatsEntryAggregated.md)
  - [StormgateWorld::PlayerStatsEntryNumBreakdown](docs/PlayerStatsEntryNumBreakdown.md)
  - [StormgateWorld::ProfilePrivacy](docs/ProfilePrivacy.md)
  - [StormgateWorld::Race](docs/Race.md)
+ - [StormgateWorld::Resolution](docs/Resolution.md)
+ - [StormgateWorld::ServersStatistics](docs/ServersStatistics.md)
+ - [StormgateWorld::ServersStatisticsEntry](docs/ServersStatisticsEntry.md)
  - [StormgateWorld::StatsByTime](docs/StatsByTime.md)
  - [StormgateWorld::StatsByTimeEntry](docs/StatsByTimeEntry.md)
  - [StormgateWorld::StatsByTimeHistoryPoint](docs/StatsByTimeHistoryPoint.md)

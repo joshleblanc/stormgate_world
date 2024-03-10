@@ -10,9 +10,10 @@
 | **anonymous** | **Boolean** |  |  |
 | **nickname** | **String** |  | [optional] |
 | **nickname_discriminator** | **String** |  | [optional] |
+| **avatar_url** | **String** |  | [optional] |
 | **rank** | **Integer** |  | [optional] |
 | **race** | [**Race**](Race.md) |  |  |
-| **league** | **String** |  | [optional] |
+| **league** | [**League**](League.md) |  | [optional] |
 | **tier** | **Integer** |  | [optional] |
 | **mmr** | **Float** |  |  |
 | **max_confirmed_mmr** | **Float** |  | [optional] |
@@ -35,6 +36,7 @@ instance = StormgateWorld::LeaderboardEntryResponse.new(
   anonymous: null,
   nickname: null,
   nickname_discriminator: null,
+  avatar_url: null,
   rank: null,
   race: null,
   league: null,

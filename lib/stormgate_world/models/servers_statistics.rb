@@ -14,56 +14,22 @@ require 'date'
 require 'time'
 
 module StormgateWorld
-  class MatchParticipantPlayerLeaderboardEntryResponse
-    attr_accessor :leaderboard_entry_id
+  class ServersStatistics
+    attr_accessor :cached_at
 
-    attr_accessor :league
+    attr_accessor :since
 
-    attr_accessor :tier
+    attr_accessor :_until
 
-    attr_accessor :rank
-
-    attr_accessor :wins
-
-    attr_accessor :losses
-
-    attr_accessor :ties
-
-    attr_accessor :win_rate
-
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+    attr_accessor :servers
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'leaderboard_entry_id' => :'leaderboard_entry_id',
-        :'league' => :'league',
-        :'tier' => :'tier',
-        :'rank' => :'rank',
-        :'wins' => :'wins',
-        :'losses' => :'losses',
-        :'ties' => :'ties',
-        :'win_rate' => :'win_rate'
+        :'cached_at' => :'cached_at',
+        :'since' => :'since',
+        :'_until' => :'until',
+        :'servers' => :'servers'
       }
     end
 
@@ -75,24 +41,16 @@ module StormgateWorld
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'leaderboard_entry_id' => :'String',
-        :'league' => :'League',
-        :'tier' => :'Integer',
-        :'rank' => :'Integer',
-        :'wins' => :'Integer',
-        :'losses' => :'Integer',
-        :'ties' => :'Integer',
-        :'win_rate' => :'Float'
+        :'cached_at' => :'Time',
+        :'since' => :'Date',
+        :'_until' => :'Date',
+        :'servers' => :'Array<ServersStatisticsEntry>'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'league',
-        :'tier',
-        :'rank',
-        :'ties',
       ])
     end
 
@@ -100,55 +58,41 @@ module StormgateWorld
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `StormgateWorld::MatchParticipantPlayerLeaderboardEntryResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `StormgateWorld::ServersStatistics` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `StormgateWorld::MatchParticipantPlayerLeaderboardEntryResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `StormgateWorld::ServersStatistics`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'leaderboard_entry_id')
-        self.leaderboard_entry_id = attributes[:'leaderboard_entry_id']
+      if attributes.key?(:'cached_at')
+        self.cached_at = attributes[:'cached_at']
       else
-        self.leaderboard_entry_id = nil
+        self.cached_at = nil
       end
 
-      if attributes.key?(:'league')
-        self.league = attributes[:'league']
-      end
-
-      if attributes.key?(:'tier')
-        self.tier = attributes[:'tier']
-      end
-
-      if attributes.key?(:'rank')
-        self.rank = attributes[:'rank']
-      end
-
-      if attributes.key?(:'wins')
-        self.wins = attributes[:'wins']
+      if attributes.key?(:'since')
+        self.since = attributes[:'since']
       else
-        self.wins = nil
+        self.since = nil
       end
 
-      if attributes.key?(:'losses')
-        self.losses = attributes[:'losses']
+      if attributes.key?(:'_until')
+        self._until = attributes[:'_until']
       else
-        self.losses = nil
+        self._until = nil
       end
 
-      if attributes.key?(:'ties')
-        self.ties = attributes[:'ties']
-      end
-
-      if attributes.key?(:'win_rate')
-        self.win_rate = attributes[:'win_rate']
+      if attributes.key?(:'servers')
+        if (value = attributes[:'servers']).is_a?(Array)
+          self.servers = value
+        end
       else
-        self.win_rate = nil
+        self.servers = nil
       end
     end
 
@@ -157,20 +101,20 @@ module StormgateWorld
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @leaderboard_entry_id.nil?
-        invalid_properties.push('invalid value for "leaderboard_entry_id", leaderboard_entry_id cannot be nil.')
+      if @cached_at.nil?
+        invalid_properties.push('invalid value for "cached_at", cached_at cannot be nil.')
       end
 
-      if @wins.nil?
-        invalid_properties.push('invalid value for "wins", wins cannot be nil.')
+      if @since.nil?
+        invalid_properties.push('invalid value for "since", since cannot be nil.')
       end
 
-      if @losses.nil?
-        invalid_properties.push('invalid value for "losses", losses cannot be nil.')
+      if @_until.nil?
+        invalid_properties.push('invalid value for "_until", _until cannot be nil.')
       end
 
-      if @win_rate.nil?
-        invalid_properties.push('invalid value for "win_rate", win_rate cannot be nil.')
+      if @servers.nil?
+        invalid_properties.push('invalid value for "servers", servers cannot be nil.')
       end
 
       invalid_properties
@@ -180,10 +124,10 @@ module StormgateWorld
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @leaderboard_entry_id.nil?
-      return false if @wins.nil?
-      return false if @losses.nil?
-      return false if @win_rate.nil?
+      return false if @cached_at.nil?
+      return false if @since.nil?
+      return false if @_until.nil?
+      return false if @servers.nil?
       true
     end
 
@@ -192,14 +136,10 @@ module StormgateWorld
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          leaderboard_entry_id == o.leaderboard_entry_id &&
-          league == o.league &&
-          tier == o.tier &&
-          rank == o.rank &&
-          wins == o.wins &&
-          losses == o.losses &&
-          ties == o.ties &&
-          win_rate == o.win_rate
+          cached_at == o.cached_at &&
+          since == o.since &&
+          _until == o._until &&
+          servers == o.servers
     end
 
     # @see the `==` method
@@ -211,7 +151,7 @@ module StormgateWorld
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [leaderboard_entry_id, league, tier, rank, wins, losses, ties, win_rate].hash
+      [cached_at, since, _until, servers].hash
     end
 
     # Builds the object from hash

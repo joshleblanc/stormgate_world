@@ -96,6 +96,7 @@ module StormgateWorld
     end
 
     # @param [Hash] opts the optional parameters
+    # @option opts [DumpFormat] :format 
     # @return [LeaderboardDumpResponse]
     def get_leaderboard_dump(opts = {})
       data, _status_code, _headers = get_leaderboard_dump_with_http_info(opts)
@@ -103,6 +104,7 @@ module StormgateWorld
     end
 
     # @param [Hash] opts the optional parameters
+    # @option opts [DumpFormat] :format 
     # @return [Array<(LeaderboardDumpResponse, Integer, Hash)>] LeaderboardDumpResponse data, response status code and response headers
     def get_leaderboard_dump_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -113,6 +115,7 @@ module StormgateWorld
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'format'] = opts[:'format'] if !opts[:'format'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
